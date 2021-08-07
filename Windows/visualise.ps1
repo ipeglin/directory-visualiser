@@ -12,7 +12,7 @@ function listDirectory {
         $Limit = 1
     }
 
-    # Run if the amount of recursion havent reached the limit
+    # Run if the amount of recursion haven't reached the limit
     if ($Level -lt $Limit) {
         $PrefixLength = ($Level + 1) # Difining the prefix length
 
