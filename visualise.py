@@ -1,6 +1,5 @@
 import os
 import sys
-from pathlib import Path
 
 def list_directory(path, level, limit):
     os.chdir(path)
