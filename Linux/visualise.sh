@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define global prefixes
-FILE_PREFIX="└"
-INDENTATION_PREFIX="─"
+FILE_PREFIX="└" # ├ (alt 195)   ╠ (alt 204)   ├ (alt 195)   └ (alt 192)
+INDENTATION_PREFIX="─" # ─ (alt 196)   ═ (alt 205)
 FOLDER_PREFIX=">"
 
 # Recursive function for file traversing
