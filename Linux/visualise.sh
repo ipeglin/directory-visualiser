@@ -57,8 +57,6 @@ listDirectory() {
             listDirectory $folder $LEVEL $LIMIT # Recurse down for each of the folders in the $FOLDERS array
         done
     fi
-
-    # read
 }
 
 # Main function for aquiring recursion limit
