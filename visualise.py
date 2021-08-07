@@ -2,9 +2,6 @@ import os
 import sys
 from pathlib import Path
 
-clear = lambda:os.system("cls")
-clear()
-
 def list_directory(path, level, limit):
     os.chdir(path)
 
