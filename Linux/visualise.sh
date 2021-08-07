@@ -18,9 +18,9 @@ listDirectory() {
     fi
 
     if [ $LEVEL -lt $LIMIT ]; then
-        PREFIX_LENGTH=$(($LIMIT + 1))
+        PREFIX_LENGTH=$(($LIMIT + 2))
 
-        FULL_FILE_PREFIX="$FILE_PREFIX$(seq -s $INDENTATION_PREFIX $(($PREFIX_LENGTH + 1)) | tr -d '[:digit:]')"
+        FULL_FILE_PREFIX="$FILE_PREFIX$(seq -s $INDENTATION_PREFIX $PREFIX_LENGTH | tr -d '[:digit:]')"
     fi
 
     echo "PATH: $CURRENT_PATH"
