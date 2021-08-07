@@ -2,22 +2,27 @@ import os
 import sys
 from pathlib import Path
 
-def list_content(path, level, limit):
-    if (level <= limit):
-        # Setting a prefix that indicates how deep the recursion has gone
-        prefix = ("=" * level) + ">"
-        print(f"{prefix} {os.path.realpath(path)}") # Print the current directory path
+def list_directory(path, level, limit):
+    if (limit < 1):
+        limit = 1
 
-        # Listing all the files withing the current directory
+    if (level < limit):
+        file_prefix = "└"
+        indentation_prefix = "─"
+        prefix_length = level + 1
+        full_file_prefix = f"{file_prefix}{indentation_prefix * prefix_length}"
+        folder_prefix = ">"
+
         files = [os.path.realpath(file) for file in os.listdir(path) if not os.path.isdir(file)]
-        [print(f"    - {(Path(file).name)}") for file in files] # Print the files in the directory
-        
-        print("\n") # Print new line before recursing to new sub-directory
-        
-        # Increment the level count to indicate how deep the recursion has gone
+        folders = [os.path.realpath(DIR) for DIR in os.listdir(path) if os.path.isdir(DIR)]
+
         level += 1
-        # Run the recursive function for each of the sub-directory in the current folder
-        [list_content(os.path.realpath(DIR), level, limit) for DIR in os.listdir(path) if os.path.isdir(DIR)]
+
+        print(f"{folder_prefix * prefix_length} {os.path.basename(path)}")
+        [print(f"{full_file_prefix} {os.path.basename(file)}") for file in files]
+
+
+        [list_directory(os.path.realpath(folder), level, limit) for folder in folders]
 
 def get_recursion_level():
     if (get_sys_args()):
@@ -35,4 +40,4 @@ def get_sys_args():
         return []
 
 # Run the recursive function in the current working directory
-list_content(os.getcwd(), 0, get_recursion_level())
+list_directory(os.getcwd(), 0, get_recursion_level())
